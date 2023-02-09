@@ -6,7 +6,7 @@ const serverPlayers = document.createElement('p')
 const serverPort = document.createElement('p')
 
 const addTextWithData = (
-    data,
+    historyList,
     serverHostName,
     serverIp,
     serverMotd,
@@ -16,19 +16,23 @@ const addTextWithData = (
 ) => {
     serverPort.className = 'server-port'
     notInformation.innerText = ''
-    serverHostName.innerText = 'Hostname : ' + data.hostname
-    serverIp.innerText = 'IP : ' + data.ip
-    serverMotd.innerHTML = 'MotD : ' + data.motd.html
-    serverOnline.innerText = 'Online : ' + data.online
+    serverHostName.innerText = 'Hostname : ' + historyList.hostname
+    serverIp.innerText = 'IP : ' + historyList.ip
+    serverMotd.innerHTML = 'MotD : ' + historyList.motd
+    serverOnline.innerText = 'Online : ' + historyList.online
     serverPlayers.innerText =
-        'Players : ' + data.players.online + '/' + data.players.max
-    serverPort.innerText = 'Port : ' + data.port
+        'Players : ' +
+        historyList.players.online +
+        '/' +
+        historyList.players.max
+    serverPort.innerText = 'Port : ' + historyList.port
 }
 
 // information serveur
-const serverData = (data, div) => {
+const serverData = (div) => {
+    const historyItem = historyList[historyList.length - 1]
     addTextWithData(
-        data,
+        historyItem,
         serverHostName,
         serverIp,
         serverMotd,
@@ -37,12 +41,12 @@ const serverData = (data, div) => {
         serverPort
     )
     const listInformation = [
-        serverPort,
-        serverPlayers,
-        serverOnline,
-        serverMotd,
-        serverIp,
         serverHostName,
+        serverIp,
+        serverMotd,
+        serverOnline,
+        serverPlayers,
+        serverPort,
     ]
     for (
         let numberInformation = 0;

@@ -46,17 +46,15 @@ const historyDisplay = (divHistory) => {
         console.log('historyList', historyList)
         console.log('historyItem', historyItem)
 
-        serverPortHistory.className = 'server-port'
-        serverHostNameHistory.innerText = 'Hostname : ' + historyItem.hostname
-        serverIpHistory.innerText = 'IP : ' + historyItem.ip
-        serverMotdHistory.innerHTML = 'MotD : ' + historyItem.motd
-        serverOnlineHistory.innerText = 'Online : ' + historyItem.online
-        serverPlayersHistory.innerText =
-            'Players : ' +
-            historyItem.players.online +
-            '/' +
-            historyItem.players.max
-        serverPortHistory.innerText = 'Port : ' + historyItem.port
+        addTextWithData(
+            historyItem,
+            serverHostNameHistory,
+            serverIpHistory,
+            serverMotdHistory,
+            serverOnlineHistory,
+            serverPlayersHistory,
+            serverPortHistory
+        )
 
         const listInformation = [
             serverPortHistory,
@@ -89,6 +87,38 @@ const saveHistory = (data) => {
     historyList.push(serverInformationList)
 
     localStorage.setItem('history', JSON.stringify(historyList))
+}
+
+const addHistoryToDisplay = (divHistory) => {
+    const serverHostNameHistory = document.createElement('p')
+    const serverIpHistory = document.createElement('p')
+    const serverMotdHistory = document.createElement('p')
+    const serverOnlineHistory = document.createElement('p')
+    const serverPlayersHistory = document.createElement('p')
+    const serverPortHistory = document.createElement('p')
+    const historyItem = historyList[historyList.length - 1]
+
+    addTextWithData(
+        historyItem,
+        serverHostNameHistory,
+        serverIpHistory,
+        serverMotdHistory,
+        serverOnlineHistory,
+        serverPlayersHistory,
+        serverPortHistory
+    )
+    console.log('Motd = ', historyItem.motd)
+    const listInformation = [
+        serverPortHistory,
+        serverPlayersHistory,
+        serverOnlineHistory,
+        serverMotdHistory,
+        serverIpHistory,
+        serverHostNameHistory,
+    ]
+    for (let number = 0; number < listInformation.length; number++) {
+        divHistory.appendChild(listInformation[number])
+    }
 }
 
 const isNotEmpty = () => {
