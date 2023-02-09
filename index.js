@@ -47,6 +47,7 @@ const addTextWithData = (
     serverPort.innerText = 'Port : ' + data.port
 }
 
+// information serveur
 const serverData = (data, div) => {
     addTextWithData(
         data,
