@@ -34,6 +34,7 @@ button.onclick = function () {
     if (input.value === '') {
         return
     }
+
     fetch('https://api.mcsrvstat.us/2/' + input.value)
         .then(function (response) {
             return response.json()
