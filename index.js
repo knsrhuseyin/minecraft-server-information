@@ -75,6 +75,7 @@ const serverData = (data, div) => {
     }
 }
 
+// Historique de la data
 const dataHistory = (data, divHistory) => {
     const serverHostNameHistory = document.createElement('p')
     const serverIpHistory = document.createElement('p')
