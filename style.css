@@ -1,0 +1,112 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #222222;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    all: unset;
+    display: block;
+}
+
+#content-container {
+    padding-top: 20px;
+    padding-left: 70px;
+    width: 75%;
+}
+
+#title {
+    text-decoration: none;
+    margin-left: 30px;
+    color: white;
+    height: 24px;
+    text-align: center;
+    font-size: 30px;
+    position: absolute;
+}
+
+#minecraft-image {
+    margin-right: 5px;
+    margin-top: 7px;
+    height: 30px;
+}
+
+#minecraft-image-header {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+#subtitle {
+    margin-bottom: 50px;
+}
+
+#header {
+    height: 50px;
+    width: 100%;
+    position: sticky;
+    background-color: blue;
+}
+
+#header-title {
+    font-size: 35px;
+    color: white;
+}
+
+#header-subtitle {
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #cdcdcd;
+}
+
+#address {
+    width: 75%;
+    height: 40px;
+    background-color: #222222;
+    border-color: #696969;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    color: gray;
+    padding-left: 10px;
+    font-size: 20px;
+}
+
+#button {
+    height: 47px;
+    background-color: blue;
+    position: absolute;
+    border-color: blue;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+#information-researched {
+    color: white;
+    margin-top: 30px;
+}
+
+#informations-server-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    margin-top: 30px;
+    color: #696969;
+}
+
+#text-history {
+    color: #696969;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+p.server-port {
+    margin-bottom: 15px;
+}
