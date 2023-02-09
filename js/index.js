@@ -8,7 +8,21 @@ const historyInformation = document.getElementById(
 const resetButtonTest = document.getElementById('reset-button-test')
 const button = document.getElementById('button')
 
+// const refresh = () => {
+//     if (isNotEmpty()) {
+//         historyDisplay(historyInformation)
+//     } else {
+//         let historyList = localStorage.getItem('history')
+//             ? JSON.parse(localStorage.getItem('history'))
+//             : []
+//         historyDisplay(historyInformation)
+//     }
+// }
+
+// refresh()
+
 resetButtonTest.onclick = function () {
+    console.log(isNotEmpty)
     console.log(localStorage.getItem('history'))
     localStorage.clear()
     console.log(
@@ -17,6 +31,7 @@ resetButtonTest.onclick = function () {
 }
 
 button.onclick = function () {
+    console.log(isNotEmpty)
     const localStorageHistory = localStorage.getItem('history')
     console.log(input.value)
     if (input.value === '') {
@@ -31,6 +46,5 @@ button.onclick = function () {
             console.log(researchedInformation, historyInformation)
             saveHistory(data)
             serverData(data, researchedInformation, historyInformation)
-            historyDisplay(historyInformation)
         })
 }

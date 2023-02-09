@@ -3,7 +3,6 @@ const localStorageHistory = localStorage.getItem('history')
 let historyList = localStorageHistory ? JSON.parse(localStorageHistory) : []
 
 const dataHistory = (data, divHistory) => {
-    const localStorageHistory = localStorage.getItem('history')
     const serverHostNameHistory = document.createElement('p')
     const serverIpHistory = document.createElement('p')
     const serverMotdHistory = document.createElement('p')
@@ -47,17 +46,17 @@ const historyDisplay = (divHistory) => {
         console.log('historyList', historyList)
         console.log('historyItem', historyItem)
 
-        serverPort.className = 'server-port'
-        serverHostName.innerText = 'Hostname : ' + historyItem.hostname
-        serverIp.innerText = 'IP : ' + historyItem.ip
-        serverMotd.innerHTML = 'MotD : ' + historyItem.motd
-        serverOnline.innerText = 'Online : ' + historyItem.online
-        serverPlayers.innerText =
+        serverPortHistory.className = 'server-port'
+        serverHostNameHistory.innerText = 'Hostname : ' + historyItem.hostname
+        serverIpHistory.innerText = 'IP : ' + historyItem.ip
+        serverMotdHistory.innerHTML = 'MotD : ' + historyItem.motd
+        serverOnlineHistory.innerText = 'Online : ' + historyItem.online
+        serverPlayersHistory.innerText =
             'Players : ' +
             historyItem.players.online +
             '/' +
             historyItem.players.max
-        serverPort.innerText = 'Port : ' + historyItem.port
+        serverPortHistory.innerText = 'Port : ' + historyItem.port
 
         const listInformation = [
             serverPortHistory,
@@ -67,13 +66,8 @@ const historyDisplay = (divHistory) => {
             serverIpHistory,
             serverHostNameHistory,
         ]
-
-        for (
-            let numberInformation;
-            numberInformation <= listInformation.length;
-            numberInformation++
-        ) {
-            divHistory.appendChild(listInformation[numberInformation])
+        for (let number = 0; number < listInformation.length; number++) {
+            divHistory.appendChild(listInformation[number])
         }
     }
 }
