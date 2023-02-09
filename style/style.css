@@ -110,3 +110,8 @@ p {
 p.server-port {
     margin-bottom: 15px;
 }
+
+#reset-button-test {
+    width: 50px;
+    height: 40px;
+}

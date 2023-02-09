@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Server Status</title>
-        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="style/style.css" />
     </head>
     <body>
         <div id="header">
@@ -50,9 +50,16 @@
                 </p>
             </div>
             <p id="text-history">Historique</p>
-            <div id="informations-server-container"></div>
+            <div id="informations-server-container">
+                <button id="reset-button-test">Reset</button>
+            </div>
         </div>
 
-        <script type="text/javascript" src="index.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/data-api.js"></script>
+        <script
+            type="text/javascript"
+            src="js/save-data-local-storage"
+        ></script>
     </body>
 </html>
