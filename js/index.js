@@ -28,10 +28,12 @@ resetButtonTest.onclick = function () {
 }
 
 button.onclick = function () {
+    button.innerHTML = `Recherchez <spinning-dots />`
     console.log(isNotEmpty)
     const localStorageHistory = localStorage.getItem('history')
     console.log(input.value)
     if (input.value === '') {
+        button.innerHTML = `<span>Recherchez</span>`
         return
     }
 
@@ -40,10 +42,16 @@ button.onclick = function () {
             return response.json()
         })
         .then(function (data) {
-            console.log(data)
-            console.log(researchedInformation, historyInformation)
-            saveHistory(data)
-            addHistoryToDisplay(historyInformation)
-            serverData(researchedInformation)
+            try {
+                console.log(data)
+                console.log(researchedInformation, historyInformation)
+                saveHistory(data)
+                addHistoryToDisplay(historyInformation)
+                serverData(researchedInformation)
+                button.innerHTML = `<span>Recherchez</span>`
+            } catch (e) {
+                button.innerHTML = `<span>Recherchez</span>`
+                return
+            }
         })
 }
