@@ -1,25 +1,27 @@
+let inputBeforeValue
 let notInformation = document.getElementById('notInformations')
 const input = document.getElementById('address')
-const researchedInformation = document.getElementById('information-researched')
+const researchedInformationContainer = document.getElementById(
+    'information-researched-container'
+)
 const historyInformation = document.getElementById(
     'informations-server-container'
 )
 
+const loading = (boolean) => {
+    if (boolean) {
+        button.innerHTML = `<span>Recherchez</span>`
+    } else {
+        button.innerHTML = `Recherchez <spinning-dots />`
+    }
+}
+
 const resetButtonTest = document.getElementById('reset-button-test')
 const button = document.getElementById('button')
 
-if (isNotEmpty()) {
-    historyDisplay(historyInformation)
-} else {
-    let historyList = localStorage.getItem('history')
-        ? JSON.parse(localStorage.getItem('history'))
-        : []
-    historyDisplay(historyInformation)
-}
+historyDisplay(historyInformation)
 
 resetButtonTest.onclick = function () {
-    console.log(isNotEmpty)
-    console.log(localStorage.getItem('history'))
     localStorage.clear()
     console.log(
         'History reseted ! Content : ' + localStorage.getItem('history')
@@ -28,22 +30,47 @@ resetButtonTest.onclick = function () {
 }
 
 button.onclick = function () {
-    console.log(isNotEmpty)
-    const localStorageHistory = localStorage.getItem('history')
+    loading(true)
     console.log(input.value)
+    console.log({ inputBeforeValue })
     if (input.value === '') {
+        loading(false)
+        adressNotFound(
+            'Veuillez entrer une adresse !',
+            'notFound',
+            'p',
+            researchedInformationContainer
+        )
+        return
+    } else if (input.value == inputBeforeValue) {
+        loading(false)
+        console.log(input.value, inputBeforeValue)
         return
     }
-
     fetch('https://api.mcsrvstat.us/2/' + input.value)
         .then(function (response) {
             return response.json()
         })
         .then(function (data) {
-            console.log(data)
-            console.log(researchedInformation, historyInformation)
-            saveHistory(data)
-            addHistoryToDisplay(historyInformation)
-            serverData(researchedInformation)
+            try {
+                console.log(data)
+                console.log(researchedInformationContainer, historyInformation)
+                saveHistory(data)
+                addHistoryToDisplay(historyInformation)
+                serverData(researchedInformationContainer)
+                inputBeforeValue = input.value
+                console.log({ inputBeforeValue })
+                loading(false)
+            } catch (e) {
+                loading(false)
+                inputBeforeValue = input.value
+                adressNotFound(
+                    'Adresse Introuvable !',
+                    'notFound',
+                    'p',
+                    researchedInformationContainer
+                )
+                return
+            }
         })
 }

@@ -1,0 +1,21 @@
+.btn {
+    height: 40px;
+    position: absolute;
+    text-decoration: none;
+    color: white;
+    background-color: blue;
+    border-color: blue;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    font-size: 1rem;
+    padding-left: 8px;
+    padding-right: 10px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.btn spinning-dots {
+    width: 20px;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+}

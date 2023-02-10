@@ -6,6 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Server Status</title>
         <link rel="stylesheet" href="style/style.css" />
+        <link rel="stylesheet" href="style/loading-style.css" />
+        <script type="text/javascript" src="js/data-api.js" defer></script>
+        <script
+            type="text/javascript"
+            src="js/save-data-local-storage.js"
+            defer
+        ></script>
+        <script type="text/javascript" src="js/index.js" defer></script>
+        <script type="module" defer>
+            import SpinningDots from './js/loading.js'
+            customElements.define('spinning-dots', SpinningDots)
+        </script>
     </head>
     <body>
         <div id="header">
@@ -40,10 +52,12 @@
                     placeholder="hypixel.net / mc.hypixel.net / 172.65.128.35 / 172.65.128.35:25565"
                     autofocus=""
                 />
-                <button type="submit" id="button">Recherchez</button>
+                <a href="#" class="btn" id="button">
+                    <span>Recherchez</span>
+                </a>
             </div>
 
-            <div id="information-researched">
+            <div id="information-researched-container">
                 <p id="notInformations">
                     Veuillez taper l'adresse ip du serveur que vous souhaitez
                     vous en informer
@@ -54,11 +68,5 @@
                 <button id="reset-button-test">Reset</button>
             </div>
         </div>
-        <script type="text/javascript" src="js/data-api.js"></script>
-        <script
-            type="text/javascript"
-            src="js/save-data-local-storage.js"
-        ></script>
-        <script type="text/javascript" src="js/index.js"></script>
     </body>
 </html>

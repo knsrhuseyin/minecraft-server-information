@@ -29,7 +29,17 @@ const addTextWithData = (
 }
 
 // information serveur
-const serverData = (div) => {
+const serverData = (divContainer, newDiv) => {
+    const newDivId = document.getElementById('div-information')
+    console.log(divContainer)
+    const divErrorId = document.getElementById('div-error')
+    if (divErrorId != undefined) {
+        divErrorId.remove()
+    }
+    if (newDivId == undefined) {
+        newDiv = document.createElement('div')
+        newDiv.id = 'div-information'
+    }
     const historyItem = historyList[historyList.length - 1]
     addTextWithData(
         historyItem,
@@ -53,6 +63,35 @@ const serverData = (div) => {
         numberInformation < listInformation.length;
         numberInformation++
     ) {
-        div.appendChild(listInformation[numberInformation])
+        newDiv.appendChild(listInformation[numberInformation])
+    }
+    divContainer.appendChild(newDiv)
+}
+
+const adressNotFound = (message, className, type, divContainer) => {
+    const divInformation = document.getElementById('div-information')
+    element = document.createElement(type)
+    element.id = 'div-error-text'
+    const divError = document.createElement('div')
+    divError.id = 'div-error'
+    const divErrorId = document.getElementById('div-error')
+    element.className = className
+    element.innerText = message
+    if (divErrorId != undefined && divInformation != undefined) {
+        divInformation.remove()
+        divErrorId.remove()
+
+        divError.appendChild(element)
+        divContainer.appendChild(divError)
+        console.log('if 1')
+    } else if (divErrorId == undefined && divInformation != undefined) {
+        divInformation.remove()
+        divError.appendChild(element)
+        divContainer.appendChild(divError)
+        console.log('if 2')
+    } else if (divErrorId == undefined && divInformation == undefined) {
+        divError.appendChild(element)
+        divContainer.appendChild(divError)
+        console.log('if 3')
     }
 }
