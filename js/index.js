@@ -1,22 +1,27 @@
 let inputBeforeValue
-let notInformation = document.getElementById('notInformations')
+const notInformation = document.getElementById('notInformations')
+const emptyHistoryText = document.getElementById('empty-history')
 const input = document.getElementById('address')
 const researchedInformationContainer = document.getElementById(
     'information-researched-container'
 )
 const historyInformation = document.getElementById(
-    'informations-server-container'
+    'informations-history-server-container'
 )
 
 const loading = (boolean) => {
     if (boolean) {
-        button.innerHTML = `<span>Recherchez</span>`
-    } else {
         button.innerHTML = `Recherchez <spinning-dots />`
+    } else {
+        button.innerHTML = `<span>Recherchez</span>`
     }
 }
 
-const resetButtonTest = document.getElementById('reset-button-test')
+if (isNotEmpty()) {
+    emptyHistoryText.remove()
+}
+
+const resetButtonTest = document.getElementById('reset-button')
 const button = document.getElementById('button')
 
 historyDisplay(historyInformation)
@@ -30,6 +35,7 @@ resetButtonTest.onclick = function () {
 }
 
 button.onclick = function () {
+    notInformation.remove()
     loading(true)
     console.log(input.value)
     console.log({ inputBeforeValue })
@@ -57,9 +63,9 @@ button.onclick = function () {
                 console.log(researchedInformationContainer, historyInformation)
                 saveHistory(data)
                 addHistoryToDisplay(historyInformation)
+                emptyHistoryText.remove()
                 serverData(researchedInformationContainer)
                 inputBeforeValue = input.value
-                console.log({ inputBeforeValue })
                 loading(false)
             } catch (e) {
                 loading(false)

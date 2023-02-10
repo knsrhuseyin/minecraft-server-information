@@ -9,6 +9,7 @@ const historyDisplay = (divHistory) => {
         const serverMotdHistory = document.createElement('p')
         const serverOnlineHistory = document.createElement('p')
         const serverPlayersHistory = document.createElement('p')
+        const serverVersionHistory = document.createElement('p')
         const serverPortHistory = document.createElement('p')
         const historyItem = historyList[number]
 
@@ -22,11 +23,13 @@ const historyDisplay = (divHistory) => {
             serverMotdHistory,
             serverOnlineHistory,
             serverPlayersHistory,
+            serverVersionHistory,
             serverPortHistory
         )
 
         const listInformation = [
             serverPortHistory,
+            serverVersionHistory,
             serverPlayersHistory,
             serverOnlineHistory,
             serverMotdHistory,
@@ -49,6 +52,7 @@ const saveHistory = (data) => {
             max: data.players.max,
             online: data.players.online,
         },
+        version: data.version,
         port: data.port,
     }
 
@@ -63,6 +67,7 @@ const addHistoryToDisplay = (divHistory) => {
     const serverMotdHistory = document.createElement('p')
     const serverOnlineHistory = document.createElement('p')
     const serverPlayersHistory = document.createElement('p')
+    const serverVersionHistory = document.createElement('p')
     const serverPortHistory = document.createElement('p')
     const historyItem = historyList[historyList.length - 1]
 
@@ -73,11 +78,13 @@ const addHistoryToDisplay = (divHistory) => {
         serverMotdHistory,
         serverOnlineHistory,
         serverPlayersHistory,
+        serverVersionHistory,
         serverPortHistory
     )
     console.log('Motd = ', historyItem.motd)
     const listInformation = [
         serverPortHistory,
+        serverVersionHistory,
         serverPlayersHistory,
         serverOnlineHistory,
         serverMotdHistory,
@@ -89,6 +96,8 @@ const addHistoryToDisplay = (divHistory) => {
     }
 }
 
+console.log(localStorage.getItem('history') != undefined)
+
 const isNotEmpty = () => {
-    return localStorage.getItem('history') != null
+    return localStorage.getItem('history') != undefined
 }

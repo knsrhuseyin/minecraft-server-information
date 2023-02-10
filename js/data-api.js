@@ -3,6 +3,7 @@ const serverIp = document.createElement('p')
 const serverMotd = document.createElement('p')
 const serverOnline = document.createElement('p')
 const serverPlayers = document.createElement('p')
+const serverVersion = document.createElement('p')
 const serverPort = document.createElement('p')
 
 const addTextWithData = (
@@ -12,6 +13,7 @@ const addTextWithData = (
     serverMotd,
     serverOnline,
     serverPlayers,
+    serverVersion,
     serverPort
 ) => {
     serverPort.className = 'server-port'
@@ -19,17 +21,22 @@ const addTextWithData = (
     serverHostName.innerText = 'Hostname : ' + historyList.hostname
     serverIp.innerText = 'IP : ' + historyList.ip
     serverMotd.innerHTML = 'MotD : ' + historyList.motd
-    serverOnline.innerText = 'Online : ' + historyList.online
+    if (historyList.online == true) {
+        serverOnline.innerText = 'Online : True'
+    } else {
+        serverOnline.innerText = 'Online : False'
+    }
     serverPlayers.innerText =
         'Players : ' +
         historyList.players.online +
         '/' +
         historyList.players.max
+    serverVersion.innerText = 'Version : ' + historyList.version
     serverPort.innerText = 'Port : ' + historyList.port
 }
 
 // information serveur
-const serverData = (divContainer, newDiv) => {
+const serverData = (divContainer, newDiv, icon) => {
     const newDivId = document.getElementById('div-information')
     console.log(divContainer)
     const divErrorId = document.getElementById('div-error')
@@ -48,6 +55,7 @@ const serverData = (divContainer, newDiv) => {
         serverMotd,
         serverOnline,
         serverPlayers,
+        serverVersion,
         serverPort
     )
     const listInformation = [
@@ -56,6 +64,7 @@ const serverData = (divContainer, newDiv) => {
         serverMotd,
         serverOnline,
         serverPlayers,
+        serverVersion,
         serverPort,
     ]
     for (
