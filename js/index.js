@@ -58,6 +58,7 @@ button.onclick = function () {
                 addHistoryToDisplay(historyInformation)
                 emptyHistoryText.remove()
                 inputBeforeValue = input.value
+                input.value = ''
                 loading(false)
             } catch (e) {
                 loading(false)
