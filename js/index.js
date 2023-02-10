@@ -54,14 +54,13 @@ button.onclick = function () {
         .then(function (data) {
             try {
                 saveHistory(data)
+                serverData(researchedInformationContainer)
                 addHistoryToDisplay(historyInformation)
                 emptyHistoryText.remove()
-                serverData(researchedInformationContainer)
                 inputBeforeValue = input.value
                 loading(false)
             } catch (e) {
                 loading(false)
-                inputBeforeValue = input.value
                 adressNotFound(
                     'Adresse Introuvable !',
                     'notFound',

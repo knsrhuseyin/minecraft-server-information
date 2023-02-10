@@ -37,15 +37,26 @@ const addTextWithData = (
 
 // information serveur
 const serverData = (divContainer, newDiv) => {
-    const newDivId = document.getElementById('div-information')
+    let newDivId = document.getElementById('div-information')
     const divErrorId = document.getElementById('div-error')
+    console.log('avant if')
     if (divErrorId != undefined) {
         divErrorId.remove()
     }
-    if (newDivId == undefined) {
+    console.log({ newDivId })
+    if (newDivId == null) {
         newDiv = document.createElement('div')
         newDiv.id = 'div-information'
+        newDivId = document.getElementById('div-information')
+        console.log('fin condition', newDivId, newDiv.id)
+    } else if (newDivId != null) {
+        newDivId.remove()
+        newDiv = document.createElement('div')
+        newDiv.id = 'div-information'
+        newDivId = document.getElementById('div-information')
     }
+    console.log(newDivId)
+    console.log('après if')
     const historyItem = historyList[historyList.length - 1]
     addTextWithData(
         historyItem,
@@ -66,13 +77,19 @@ const serverData = (divContainer, newDiv) => {
         serverVersion,
         serverPort,
     ]
+    console.log('avant for')
+    newDivId = document.getElementById('div-information')
     for (
         let numberInformation = 0;
         numberInformation < listInformation.length;
         numberInformation++
     ) {
+        console.log('dans for')
+        console.log({ newDivId })
         newDiv.appendChild(listInformation[numberInformation])
+        console.log('après child')
     }
+    console.log('après for')
     divContainer.appendChild(newDiv)
 }
 
