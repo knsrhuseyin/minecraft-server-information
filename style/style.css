@@ -70,6 +70,10 @@ p {
     color: #cdcdcd;
 }
 
+#input-group {
+    height: 40px;
+}
+
 #address {
     width: 75%;
     height: 40px;
@@ -83,7 +87,7 @@ p {
 }
 
 #button {
-    height: 47px;
+    height: 45.43px;
     background-color: blue;
     position: absolute;
     border-color: blue;
