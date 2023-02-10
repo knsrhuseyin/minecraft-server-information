@@ -1,4 +1,3 @@
-let inputBeforeValue
 const notInformation = document.getElementById('notInformations')
 const emptyHistoryText = document.getElementById('empty-history')
 const input = document.getElementById('address')
@@ -43,9 +42,6 @@ button.onclick = function () {
             researchedInformationContainer
         )
         return
-    } else if (input.value == inputBeforeValue) {
-        loading(false)
-        return
     }
     fetch('https://api.mcsrvstat.us/2/' + input.value)
         .then(function (response) {
@@ -57,7 +53,7 @@ button.onclick = function () {
                 serverData(researchedInformationContainer)
                 addHistoryToDisplay(historyInformation)
                 emptyHistoryText.remove()
-                inputBeforeValue = input.value
+                serverData(researchedInformationContainer)
                 input.value = ''
                 loading(false)
             } catch (e) {
@@ -68,6 +64,7 @@ button.onclick = function () {
                     'p',
                     researchedInformationContainer
                 )
+                console.log(inputBeforeValue)
                 return
             }
         })
