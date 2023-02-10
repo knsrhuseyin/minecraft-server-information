@@ -64,7 +64,6 @@ button.onclick = function () {
                     'p',
                     researchedInformationContainer
                 )
-                console.log(inputBeforeValue)
                 return
             }
         })
