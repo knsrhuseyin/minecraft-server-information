@@ -1,3 +1,7 @@
+:root {
+    --main-text-color: #696969;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -29,7 +33,6 @@ p {
     height: 24px;
     text-align: center;
     font-size: 30px;
-    position: absolute;
 }
 
 #minecraft-image {
@@ -88,7 +91,7 @@ p {
     border-bottom-right-radius: 5px;
 }
 
-#information-researched {
+#information-researched-container {
     color: white;
     margin-top: 30px;
 }
@@ -98,11 +101,11 @@ p {
     flex-direction: column-reverse;
     justify-content: flex-end;
     margin-top: 30px;
-    color: #696969;
+    color: var(--main-text-color);
 }
 
 #text-history {
-    color: #696969;
+    color: var(--main-text-color);
     margin-top: 30px;
     margin-bottom: 20px;
 }
