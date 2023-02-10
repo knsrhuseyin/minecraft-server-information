@@ -36,9 +36,8 @@ const addTextWithData = (
 }
 
 // information serveur
-const serverData = (divContainer, newDiv, icon) => {
+const serverData = (divContainer, newDiv) => {
     const newDivId = document.getElementById('div-information')
-    console.log(divContainer)
     const divErrorId = document.getElementById('div-error')
     if (divErrorId != undefined) {
         divErrorId.remove()
@@ -92,15 +91,13 @@ const adressNotFound = (message, className, type, divContainer) => {
 
         divError.appendChild(element)
         divContainer.appendChild(divError)
-        console.log('if 1')
     } else if (divErrorId == undefined && divInformation != undefined) {
         divInformation.remove()
+
         divError.appendChild(element)
         divContainer.appendChild(divError)
-        console.log('if 2')
     } else if (divErrorId == undefined && divInformation == undefined) {
         divError.appendChild(element)
         divContainer.appendChild(divError)
-        console.log('if 3')
     }
 }

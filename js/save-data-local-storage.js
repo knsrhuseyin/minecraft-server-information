@@ -13,9 +13,6 @@ const historyDisplay = (divHistory) => {
         const serverPortHistory = document.createElement('p')
         const historyItem = historyList[number]
 
-        console.log('historyList', historyList)
-        console.log('historyItem', historyItem)
-
         addTextWithData(
             historyItem,
             serverHostNameHistory,
@@ -81,7 +78,6 @@ const addHistoryToDisplay = (divHistory) => {
         serverVersionHistory,
         serverPortHistory
     )
-    console.log('Motd = ', historyItem.motd)
     const listInformation = [
         serverPortHistory,
         serverVersionHistory,
@@ -95,8 +91,6 @@ const addHistoryToDisplay = (divHistory) => {
         divHistory.appendChild(listInformation[number])
     }
 }
-
-console.log(localStorage.getItem('history') != undefined)
 
 const isNotEmpty = () => {
     return localStorage.getItem('history') != undefined

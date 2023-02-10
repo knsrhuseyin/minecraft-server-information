@@ -28,17 +28,12 @@ historyDisplay(historyInformation)
 
 resetButtonTest.onclick = function () {
     localStorage.clear()
-    console.log(
-        'History reseted ! Content : ' + localStorage.getItem('history')
-    )
     window.location.reload()
 }
 
 button.onclick = function () {
     notInformation.remove()
     loading(true)
-    console.log(input.value)
-    console.log({ inputBeforeValue })
     if (input.value === '') {
         loading(false)
         adressNotFound(
@@ -50,7 +45,6 @@ button.onclick = function () {
         return
     } else if (input.value == inputBeforeValue) {
         loading(false)
-        console.log(input.value, inputBeforeValue)
         return
     }
     fetch('https://api.mcsrvstat.us/2/' + input.value)
@@ -59,8 +53,6 @@ button.onclick = function () {
         })
         .then(function (data) {
             try {
-                console.log(data)
-                console.log(researchedInformationContainer, historyInformation)
                 saveHistory(data)
                 addHistoryToDisplay(historyInformation)
                 emptyHistoryText.remove()
